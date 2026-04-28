@@ -1,0 +1,4 @@
+# Claude Code machine-specific files
+settings.local.json
+settings-local.json
+.claude/settings.local.json

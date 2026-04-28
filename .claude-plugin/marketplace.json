@@ -1,0 +1,22 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "claude-marketplace",
+  "description": "Ivan Gudak's private Claude Code plugin marketplace — productivity and workflow tools",
+  "owner": {
+    "name": "Ivan Gudak",
+    "email": "ivan.gudak@dynatrace.com"
+  },
+  "plugins": [
+    {
+      "name": "dev-workflows",
+      "description": "Three slash commands (/impl, /vuln, /upgrade) with Opus-backed planning, code review, and security-remediation workflows. Includes five reusable subagents (risk-planner, code-review, test-baseline, review-fixer, impl-maintenance) and three notification hooks.",
+      "author": {
+        "name": "Ivan Gudak",
+        "email": "ivan.gudak@dynatrace.com"
+      },
+      "category": "development",
+      "source": "./plugins/dev-workflows",
+      "homepage": "https://github.com/ihudak/claude-marketplace/tree/main/plugins/dev-workflows"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "dev-workflows",
+  "description": "Structured /impl, /vuln, /upgrade commands with Opus-backed planning, code review, and security-remediation workflows",
+  "author": {
+    "name": "Ivan Gudak",
+    "email": "ivan.gudak@dynatrace.com"
+  }
+}
