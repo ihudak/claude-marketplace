@@ -1,0 +1,8 @@
+{
+  "name": "engineering-practices",
+  "description": "Engineering practice skills: TDD, architecture improvement, disciplined debugging, and design grilling (with and without domain docs)",
+  "author": {
+    "name": "Ivan Gudak",
+    "email": "ivan.gudak@dynatrace.com"
+  }
+}

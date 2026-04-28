@@ -17,6 +17,39 @@
       "category": "development",
       "source": "./plugins/dev-workflows",
       "homepage": "https://github.com/ihudak/claude-marketplace/tree/main/plugins/dev-workflows"
+    },
+    {
+      "name": "engineering-practices",
+      "description": "Five engineering-practice skills: TDD red-green-refactor, architecture deepening, disciplined debugging, and design-grilling sessions (with and without domain docs).",
+      "author": {
+        "name": "Ivan Gudak",
+        "email": "ivan.gudak@dynatrace.com"
+      },
+      "category": "development",
+      "source": "./plugins/engineering-practices",
+      "homepage": "https://github.com/ihudak/claude-marketplace/tree/main/plugins/engineering-practices"
+    },
+    {
+      "name": "productivity",
+      "description": "Two productivity skills: caveman ultra-compressed communication mode (~75% token reduction), and write-a-skill for authoring new Claude Code skills.",
+      "author": {
+        "name": "Ivan Gudak",
+        "email": "ivan.gudak@dynatrace.com"
+      },
+      "category": "productivity",
+      "source": "./plugins/productivity",
+      "homepage": "https://github.com/ihudak/claude-marketplace/tree/main/plugins/productivity"
+    },
+    {
+      "name": "planning",
+      "description": "Two pre-implementation planning skills: discovery-interview turns vague ideas into detailed specs, premortem identifies failure modes using the Tiger/Paper Tiger/Elephant risk framework.",
+      "author": {
+        "name": "Ivan Gudak",
+        "email": "ivan.gudak@dynatrace.com"
+      },
+      "category": "development",
+      "source": "./plugins/planning",
+      "homepage": "https://github.com/ihudak/claude-marketplace/tree/main/plugins/planning"
     }
   ]
 }

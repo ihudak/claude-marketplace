@@ -7,6 +7,9 @@ Ivan Gudak's private Claude Code plugin marketplace.
 | Plugin | Description |
 |--------|-------------|
 | [dev-workflows](plugins/dev-workflows/) | `/impl`, `/vuln`, `/upgrade` commands with Opus-backed planning, code review, and security-remediation workflows |
+| [engineering-practices](plugins/engineering-practices/) | Skills for TDD, architecture improvement, disciplined debugging, and design grilling |
+| [productivity](plugins/productivity/) | Caveman compressed-communication mode and write-a-skill for authoring new skills |
+| [planning](plugins/planning/) | Discovery interviews and pre-mortem risk analysis for pre-implementation planning |
 
 ## Installation
 
