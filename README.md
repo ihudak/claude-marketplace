@@ -1,4 +1,4 @@
-# Claude Marketplace
+# ihudak-claude-plugins
 
 Ivan Gudak's private Claude Code plugin marketplace.
 
@@ -8,6 +8,7 @@ Ivan Gudak's private Claude Code plugin marketplace.
 |--------|-------------|
 | [dev-workflows](plugins/dev-workflows/) | `/impl`, `/vuln`, `/upgrade` commands with Opus-backed planning, code review, and security-remediation workflows |
 | [engineering-practices](plugins/engineering-practices/) | Skills for TDD, architecture improvement, disciplined debugging, and design grilling |
+| [obsidian-llm-wiki](plugins/obsidian-llm-wiki/) | Seven slash commands for compiling Obsidian vault knowledge into a persistent, cross-referenced wiki; supports Claude Code and GitHub Copilot |
 | [productivity](plugins/productivity/) | Caveman compressed-communication mode and write-a-skill for authoring new skills |
 | [planning](plugins/planning/) | Discovery interviews and pre-mortem risk analysis for pre-implementation planning |
 
