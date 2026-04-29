@@ -61,6 +61,8 @@ Do not skim. Read every section.
 | `Clippings/` or `Research/` | Research/clip | Key concepts, takeaways, relevant decisions |
 | `.raw/` | Inbox source | Full extraction — this is a deliberate ingest target; extract everything |
 
+> Note: Daily notes must use level-2 `## Notes` and `## Worklog` headings; other heading levels are skipped.
+
 **For `.raw/` HTML files**: check if defuddle is available first:
 ```bash
 npx defuddle --version 2>/dev/null && echo "available" || echo "not available"

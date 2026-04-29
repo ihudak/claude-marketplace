@@ -50,6 +50,8 @@ find "Knowledge/wiki" -name "*.md" | xargs awk '
 ' | sort -u
 ```
 
+> Note: tags must use the YAML multi-line block form (`tags:` followed by `  - tagname` lines); inline arrays (`tags: [a, b]`) are silently skipped by this script.
+
 Also collect inline tags from page bodies:
 ```bash
 grep -roh "#[a-zA-Z][a-zA-Z0-9/_-]*" "Knowledge/wiki/" | grep -v "^#" | sort -u
@@ -102,7 +104,7 @@ Present the stale list and ask:
 Note: stale means zero uses in `Knowledge/wiki/` only. The tag may be used elsewhere
 in the vault (tasks, project files). Confirm zero vault-wide use before suggesting removal:
 ```bash
-grep -r "#tagname" "<VAULT_PATH>" --include="*.md" | grep -v "Knowledge/wiki/" | wc -l
+grep -r "#tagname" "${VAULT}" --include="*.md" | grep -v "Knowledge/wiki/" | wc -l
 ```
 If vault-wide count > 0, flag as "used outside wiki — keep?" rather than suggesting removal.
 

@@ -136,116 +136,21 @@ export VAULT_PATH="/mnt/c/Users/<YourWindowsUsername>/path/to/obsidian_vault"
 
 ### Part C — Vault Integration (one-time, commit to vault repo)
 
-These steps wire the wiki plugin into the vault's instruction files so both agents
-know about the wiki layer.
+After completing Parts A and B, run `/wiki-init` (Claude Code) or `wiki-init:` (Copilot).
+This command handles the entire vault integration automatically:
 
-#### 1. Create the raw inbox directory
+- Creates the `.raw/` inbox
+- Bootstraps `Knowledge/wiki/` with skeleton files (`_index.md`, `_log.md`, `_manifest.json`, `hot.md`)
+- Copies the wiki schema into `.obsidian/copilot/wiki-schema.md`
+- Merges the wiki block into `CLAUDE.md` and `.github/copilot-instructions.md` idempotently
 
-```bash
-cd /path/to/your/vault
-mkdir .raw
-touch .raw/.gitkeep
-```
+**Re-run `/wiki-init` after every plugin update** to keep the schema and instruction files in sync.
 
-#### 2. Copy the wiki schema reference
-
-```bash
-# From the plugin installation directory (adjust path for your setup):
-# Claude Code (marketplace):
-cp ~/.claude/plugins/data/obsidian-llm-wiki-ihudak-plugins/skills/wiki-schema/SKILL.md \
-   .obsidian/copilot/wiki-schema.md
-
-# Claude Code (local):
-cp /path/to/obsidian-llm-wiki/skills/wiki-schema/SKILL.md \
-   .obsidian/copilot/wiki-schema.md
-
-# Copilot (marketplace):
-cp ~/.copilot/installed-plugins/copilot-marketplace/obsidian-llm-wiki/skills/wiki-schema/SKILL.md \
-   .obsidian/copilot/wiki-schema.md
-```
-
-> **Schema sync:** `wiki-schema.md` in your vault is a copy of the plugin's schema file.
-> Re-run this step after updating the plugin to keep them in sync.
-> The vault copy is read by GitHub Copilot; the plugin copy is read by Claude Code.
-
-#### 3. Add the wiki section to `.github/copilot-instructions.md`
-
-Append to the file (or merge if a `## Wiki` section already exists):
-
-```markdown
-## Wiki
-
-Compiled knowledge base at `Knowledge/wiki/`. Powered by the `obsidian-llm-wiki` plugin.
-Full schema at `.obsidian/copilot/wiki-schema.md`.
-
-**Hot cache rule (CRITICAL):** Before any wiki operation, read `Knowledge/wiki/hot.md`
-if it exists. This restores recent session context. Do not announce it — just absorb it.
-
-### Prefixes
-
-| Prefix | Description |
-|--------|-------------|
-| `wiki-ingest: @filepath` | Ingest one source file into the wiki |
-| `wiki-scan: [directory]` | Scan directory for unprocessed files; batch-ingest new/changed |
-| `wiki-query: <question>` | Answer from the compiled wiki with citations |
-| `wiki-save:` | Save current conversation as a wiki page |
-| `wiki-lint:` | Run wiki health check, produce lint report |
-| `wiki-hot:` | Manually refresh the hot cache |
-| `wiki-tags-refresh:` | Sync wiki tags with `tag-index.md` |
-| `wiki-init:` | Initialize vault integration (first run or after plugin update) |
-
-When any of these prefixes is used, read the corresponding skill file at
-`~/.copilot/installed-plugins/copilot-marketplace/obsidian-llm-wiki/skills/<skill-name>/SKILL.md`
-fully before executing.
-
-### Boundary Rules
-
-Wiki MUST NEVER write to: `Meetings/`, `Daily/`, `Projects/`, `Customers/`, `People/`,
-`Clippings/`, `Research/`. All wiki output goes to `Knowledge/wiki/`. The only source
-directory wiki may modify is `.raw/` (archiving processed files to `.raw/_processed/YYYY-MM/`).
-
-### Tags
-
-Only use tags from `.obsidian/copilot/tag-index.md`. Flag missing tags with
-`tag-needed: <proposed>` in the log entry; approve via `wiki-tags-refresh:`.
-```
-
-#### 4. Add wiki commands to `CLAUDE.md`
-
-In the Workflows table, add these rows after `/tags-refresh`:
-
-```markdown
-| `/wiki-ingest @filepath` | `wiki-ingest:` | Ingest one source file into the wiki |
-| `/wiki-scan [directory]` | `wiki-scan:` | Scan for unprocessed files; batch-ingest new/changed |
-| `/wiki-query <question>` | `wiki-query:` | Answer from the compiled wiki with citations |
-| `/wiki-save` | `wiki-save:` | Save current conversation as a wiki page |
-| `/wiki-lint` | `wiki-lint:` | Run wiki health check, produce lint report |
-| `/wiki-hot` | `wiki-hot:` | Manually refresh the hot cache |
-| `/wiki-tags-refresh` | `wiki-tags-refresh:` | Sync wiki tags with tag-index.md |
-| `/wiki-init` | `wiki-init:` | Initialize vault integration (first run or after plugin update) |
-```
-
-Then add a new section (before `## Python Scripts`):
-
-```markdown
-## Wiki
-
-Compiled knowledge base at `Knowledge/wiki/`. Installed from
-`obsidian-llm-wiki@ihudak-plugins`. Full schema at `.obsidian/copilot/wiki-schema.md`.
-
-`Knowledge/wiki/hot.md` is auto-read at session start and auto-updated at session end
-via plugin hooks. Run `/wiki-hot` if the cache is stale.
-
-Wiki MUST NEVER write to: `Meetings/`, `Daily/`, `Projects/`, `Customers/`, `People/`,
-`Clippings/`, `Research/`. Wiki does not create tasks, does not touch `Tasks.md`, and
-does not modify project files. Only use tags from `.obsidian/copilot/tag-index.md`.
-```
-
-#### 5. Commit the vault changes
+Then commit the vault changes:
 
 ```bash
-cd /path/to/your/vault
-git add .obsidian/copilot/wiki-schema.md .github/copilot-instructions.md CLAUDE.md .raw/.gitkeep
+git add .raw/.gitkeep Knowledge/wiki/ .obsidian/copilot/wiki-schema.md \
+        CLAUDE.md .github/copilot-instructions.md
 git commit -m "Add obsidian-llm-wiki integration"
 git push
 ```
@@ -265,6 +170,7 @@ git push
 | `/wiki-lint` | Run a wiki health check and produce a lint report |
 | `/wiki-hot` | Manually refresh the hot cache |
 | `/wiki-tags-refresh` | Sync wiki tags with `.obsidian/copilot/tag-index.md` |
+| `/wiki-init` | Initialize vault integration (first run or after plugin update) |
 
 ### GitHub Copilot — Natural Language Prefixes
 

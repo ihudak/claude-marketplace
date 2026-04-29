@@ -55,6 +55,7 @@ the correct workflow.
 | `wiki-lint:` | wiki-lint | Run wiki health check, produce lint report |
 | `wiki-hot:` | wiki-hot | Manually refresh the hot cache |
 | `wiki-tags-refresh:` | wiki-tags-refresh | Sync wiki tags with vault's tag-index.md |
+| `wiki-init:` | wiki-init | Initialize or re-initialize vault integration (first run or after plugin update) |
 
 When the user types any of these prefixes, read the corresponding skill file fully
 before executing. Skill files are at `skills/<skill-name>/SKILL.md` relative to the
@@ -77,6 +78,7 @@ except that Claude Code also auto-updates hot.md at session start/end via hooks.
 | `wiki-lint:` | `/wiki-lint` |
 | `wiki-hot:` | `/wiki-hot` |
 | `wiki-tags-refresh:` | `/wiki-tags-refresh` |
+| `wiki-init:` | `/wiki-init` |
 
 ---
 
