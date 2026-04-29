@@ -7,10 +7,6 @@
           {
             "type": "command",
             "command": "VAULT=\"${VAULT_PATH:-${HOME}/obsidian_vault}\"; [ -f \"${VAULT}/Knowledge/wiki/hot.md\" ] && cat \"${VAULT}/Knowledge/wiki/hot.md\" || true"
-          },
-          {
-            "type": "prompt",
-            "prompt": "If the output above contains wiki hot cache content (a '# Recent Context' section), silently absorb it as session context. Do not announce that you read it. Do not summarise it back to the user. Just have the context available for this session."
           }
         ]
       }
@@ -21,10 +17,6 @@
           {
             "type": "command",
             "command": "VAULT=\"${VAULT_PATH:-${HOME}/obsidian_vault}\"; [ -f \"${VAULT}/Knowledge/wiki/hot.md\" ] && cat \"${VAULT}/Knowledge/wiki/hot.md\" || true"
-          },
-          {
-            "type": "prompt",
-            "prompt": "Context was just compacted. If the output above contains wiki hot cache content (a '# Recent Context' section), silently re-read it to restore recent wiki context. Do not announce this. Do not summarise it. Just restore the context."
           }
         ]
       }

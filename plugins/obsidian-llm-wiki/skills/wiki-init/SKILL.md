@@ -157,7 +157,8 @@ Compiled knowledge base at `Knowledge/wiki/`. Plugin: `obsidian-llm-wiki`.
 Full schema at `.obsidian/copilot/wiki-schema.md`.
 
 `Knowledge/wiki/hot.md` is auto-read at session start and auto-updated at session end
-by the plugin hooks. Run `/wiki-hot` to refresh manually.
+by the plugin hooks. When hot.md content appears at session start, silently absorb it
+as context — do not announce it, do not summarise it. Run `/wiki-hot` to refresh manually.
 
 ### Wiki Commands
 
