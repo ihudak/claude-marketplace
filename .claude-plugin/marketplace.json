@@ -53,7 +53,7 @@
     },
     {
       "name": "obsidian-llm-wiki",
-      "description": "LLM Wiki pattern for an active Obsidian vault. Seven slash commands (/wiki-ingest, /wiki-scan, /wiki-query, /wiki-save, /wiki-lint, /wiki-hot, /wiki-tags-refresh) compile knowledge from meetings, projects, daily notes, and raw sources into a persistent, cross-referenced wiki at Knowledge/wiki/. Supports Claude Code and GitHub Copilot as first-class agents with session-continuity hooks.",
+      "description": "LLM Wiki pattern for an active Obsidian vault. Eight slash commands (/wiki-init, /wiki-ingest, /wiki-scan, /wiki-query, /wiki-save, /wiki-lint, /wiki-hot, /wiki-tags-refresh) compile knowledge from meetings, projects, daily notes, and raw sources into a persistent, cross-referenced wiki at Knowledge/wiki/. Supports Claude Code and GitHub Copilot as first-class agents with session-continuity hooks.",
       "author": {
         "name": "Ivan Gudak",
         "email": "ivan.gudak@dynatrace.com"
